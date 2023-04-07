@@ -1,3 +1,4 @@
+import 'package:ask_42/custom_loader.dart';
 import 'package:ask_42/feature_box.dart';
 import 'package:ask_42/open_ai_service.dart';
 import 'package:ask_42/palette.dart';
@@ -69,36 +70,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ask Daniel!'),
+        title: const Text(
+          'Ask Daniel!',
+          style: TextStyle(color: Palette.whiteColor),
+        ),
         leading: const Icon(Icons.menu),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Stack(
-              children: [
-                //virtual assistant picture
-                Center(
-                  child: Container(
-                    height: 120,
-                    width: 120,
-                    margin: const EdgeInsets.only(top: 4),
-                    decoration: const BoxDecoration(
-                        color: Palette.assistantCircleColor,
-                        shape: BoxShape.circle),
-                  ),
-                ),
-                Container(
-                  height: 123,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/virtualAssistant.png'),
-                    ),
-                  ),
-                ),
-              ],
+            //loader animation
+            const SizedBox(
+              width: 350,
+              height: 350,
+              child: CustomLoader(),
             ),
             // chat bubble
             Visibility(
@@ -113,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Palette.borderColor,
+                    color: Palette.whiteColor,
                   ),
                   borderRadius: BorderRadius.circular(20).copyWith(
                     topLeft: Radius.zero,
@@ -125,10 +111,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Text(
                     generatedContent == null
-                        ? 'Good Morning, How can i assist you?'
+                        ? 'Hi there what is bugging you? Anything i can assist you with?'
                         : generatedContent!,
                     style: TextStyle(
-                      color: Palette.mainFontColor,
+                      color: Palette.whiteColor,
                       fontSize: generatedContent == null ? 25 : 18,
                       fontFamily: 'Cera Pro',
                     ),
@@ -155,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                   'Here are a few suggestions: ',
                   style: TextStyle(
                     fontFamily: 'Cera Pro',
-                    color: Palette.mainFontColor,
+                    color: Palette.whiteColor,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -168,18 +154,18 @@ class _HomePageState extends State<HomePage> {
               child: const Column(
                 children: [
                   FeatureBox(
-                    color: Palette.firstSuggestionBoxColor,
+                    color: Palette.firstBubble,
                     headerText: 'ChatGPT',
                     featureText: 'A smarter way to stay informed with ChatGPT.',
                   ),
                   FeatureBox(
-                    color: Palette.secondSuggestionBoxColor,
+                    color: Palette.firstBubble,
                     headerText: 'Dall-E',
                     featureText:
                         'Get inspired by the latest AI image creation powered by Dall-E',
                   ),
                   FeatureBox(
-                    color: Palette.thirdSuggestionBoxColor,
+                    color: Palette.firstBubble,
                     headerText: 'Voice Assistant',
                     featureText:
                         'Get some things done in a quick way without the necessity to type by Voice Assistant',
@@ -211,7 +197,7 @@ class _HomePageState extends State<HomePage> {
             initSpeechToText();
           }
         },
-        backgroundColor: Palette.firstSuggestionBoxColor,
+        backgroundColor: Palette.whiteColor,
         // child: Icon(speechToText.isListening ? Icons.stop : Icons.mic),
         child: const Icon(Icons.mic),
       ),

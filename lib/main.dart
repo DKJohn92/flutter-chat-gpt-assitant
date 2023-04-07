@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(useMaterial3: true).copyWith(
-          scaffoldBackgroundColor: Palette.whiteColor,
-          appBarTheme: const AppBarTheme(color: Palette.whiteColor)),
+          scaffoldBackgroundColor: Palette.backGroundColor,
+          appBarTheme: AppBarTheme(color: Palette.backGroundColor)),
       title: 'Ask 42',
       home: const HomePage(),
     );

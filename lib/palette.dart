@@ -10,4 +10,7 @@ class Palette {
   static const Color borderColor = Color.fromRGBO(200, 200, 200, 1);
   static const Color blackColor = Colors.black;
   static const Color whiteColor = Colors.white;
+  static Color backGroundColor = Colors.deepPurple[300]!;
+  static const Color firstBubble = Color.fromARGB(255, 245, 201, 170);
+  static Color iconColor = Colors.red[200]!;
 }
